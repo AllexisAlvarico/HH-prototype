@@ -17,45 +17,54 @@ public class PlaneType : MonoBehaviour
         Debug.Log("faction: " + factionType);
     }
 
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("plane type: " + planeType);
+            Debug.Log("plane faction: " + factionType);
+        }
+    }
+
     private void randomizer()
     {
         planeType = Random.Range(0, 5);
 
         switch (planeType){
             case 0:
-                Debug.Log("hellcat");
+                //Debug.Log("hellcat");
                 factionType = "allied";
                 planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
                 break;
             case 1:
-                Debug.Log("lightning");
+                //Debug.Log("lightning");
                 factionType = "allied";
                 planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
                 break;
             case 2:
-                Debug.Log("fortress");
+                //Debug.Log("fortress");
                 factionType = "allied";
                 planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
                 break;
             case 3:
-                Debug.Log("messerschmit");
+                //Debug.Log("messerschmit");
                 factionType = "axis";
                 planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
                 break;
             case 4:
-                Debug.Log("heinkel");
+                //Debug.Log("heinkel");
                 factionType = "axis";
                 planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
                 break;
             case 5:
-                Debug.Log("fockwulf");
+                //Debug.Log("fockwulf");
                 factionType = "axis";
                 planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
                 break;
             default:
-                Debug.Log("");
+                //Debug.Log("");
                 break;
-
         }
  
     }
@@ -74,4 +83,5 @@ public class PlaneType : MonoBehaviour
     {
         return planeSprite;
     }
+
 }
