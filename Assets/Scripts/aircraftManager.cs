@@ -16,7 +16,7 @@ public class aircraftManager : MonoBehaviour
         for (int i = 0; i < amountOfPlane; i++)
         {
             position = new Vector3(Random.Range(-3.91f, 3.79f), Random.Range(-3.92f, 3.75f), 0);
-            Instantiate(plane, position, Quaternion.identity);
+            plane.GetComponent<PlaneType>().spawnPlane(plane, position, i);
         }
     }
 

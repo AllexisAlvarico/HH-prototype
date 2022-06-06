@@ -8,6 +8,7 @@ public class PlaneType : MonoBehaviour
     private string factionType;
     private Sprite planeSprite;
     private GameObject planeManager;
+    public int planeID;
 
     // Start is called before the first frame update
     void Start()
@@ -20,11 +21,7 @@ public class PlaneType : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("plane type: " + planeType);
-            Debug.Log("plane faction: " + factionType);
-        }
+        //put box here when it clicking on the radar
     }
 
     private void randomizer()
@@ -82,6 +79,17 @@ public class PlaneType : MonoBehaviour
     public Sprite getSprite()
     {
         return planeSprite;
+    }
+
+    public int getID()
+    {
+        return planeID;
+    }
+
+    public void spawnPlane(GameObject _object, Vector3 _postion, int _id)
+    {
+        planeID = _id;
+        Instantiate(_object, _postion, Quaternion.identity);
     }
 
 }
