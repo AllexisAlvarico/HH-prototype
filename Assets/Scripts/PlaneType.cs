@@ -91,6 +91,11 @@ public class PlaneType : MonoBehaviour
         return planeID;
     }
 
+    public GameObject GetObject()
+    {
+        return gameObject;
+    }
+
     public void spawnPlane(GameObject _object, Vector3 _postion, int _id)
     {
         planeID = _id;

@@ -10,7 +10,21 @@ public class PlaneSelection : MonoBehaviour
     [SerializeField]
     private RawImage rawImageObj;
 
+    private int count;
+    private int score;
+
+    [SerializeField]
+    private GameObject scoreText;
+
+
     private GameObject planeData;
+
+    private void Start()
+    {
+        count = 0;
+        score = 0;
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -19,6 +33,7 @@ public class PlaneSelection : MonoBehaviour
             Debug.Log("Player Touched Plane ID: " + collision.gameObject.GetComponent<PlaneType>().getID());
             planeData = collision.gameObject;
             rawImageObj.texture = collision.gameObject.GetComponent<PlaneType>().getTexture();
+            Destroy(collision.gameObject);
             panel.SetActive(true);
         }
     }
@@ -29,14 +44,18 @@ public class PlaneSelection : MonoBehaviour
         if (planeData.GetComponent<PlaneType>().getFaction() == "allied")
         {
             // give score if correct
+            score++;
+            count++;
+            scoreText.GetComponent<Text>().text = "Score: " + score + "/" + count;
 
         }
         else
         {
             // no points
+            count++;
+
+            scoreText.GetComponent<Text>().text = "Score: " + score + "/" + count;
         }
-
-
         panel.SetActive(false);
     }
 
@@ -46,13 +65,17 @@ public class PlaneSelection : MonoBehaviour
         if (planeData.GetComponent<PlaneType>().getFaction() == "axis")
         {
             // give score if correct
-
+            score++;
+            count++;
+            scoreText.GetComponent<Text>().text = "Score: " + score + "/" + count;
         }
         else
         {
             // no points
-        }
+            count++;
 
+            scoreText.GetComponent<Text>().text = "Score: " + score + "/" + count;
+        }
         panel.SetActive(false);
     }
 
