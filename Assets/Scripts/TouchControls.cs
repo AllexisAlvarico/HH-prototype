@@ -4,23 +4,18 @@ using UnityEngine;
 
 public class TouchControls : MonoBehaviour
 {
-    private GameObject touchBoxBase;    //Used to set up the hit/touchbox
+
+    [SerializeField]
     private GameObject activeBox;       //Used to set positions and wether or not it's active;
+    [SerializeField]
+    private float maxActiveTime = 0.1f;
+    
     private Touch touchInput;
     private float activeCounter = 0.0f;
     private Vector3 touchPosition;
 
-    public Vector2 boxSize = new Vector2(0.32f,0.32f);
-    public float maxActiveTime = 0.1f;
-
     void Start()
     {
-        touchBoxBase = new GameObject();
-        touchBoxBase.AddComponent<PlaneSelection>();
-        touchBoxBase.AddComponent<BoxCollider2D>();
-        touchBoxBase.GetComponent<BoxCollider2D>().size = boxSize;    //Size is double the plane size
-        touchBoxBase.SetActive(false);                                                  //Inactive by default
-        activeBox = Instantiate(touchBoxBase, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
         activeBox.SetActive(false);
     }
 
@@ -50,4 +45,7 @@ public class TouchControls : MonoBehaviour
             }
         }
     }
+
+
+
 }
