@@ -16,7 +16,8 @@ public class TouchControls : MonoBehaviour
 
     void Start()
     {
-        activeBox.SetActive(false);
+        //activeBox.SetActive(false);
+        activeBox.GetComponent<BoxCollider2D>().enabled = false;
     }
 
     void Update()
@@ -26,22 +27,24 @@ public class TouchControls : MonoBehaviour
             touchInput = Input.GetTouch(0);
 
             //Move and activate hit box at first touch posiiton
-            if (!activeBox.activeSelf)
+            if (!activeBox.GetComponent<BoxCollider2D>().enabled)
             {
                 touchPosition = Camera.main.ScreenToWorldPoint(touchInput.position);
                 touchPosition.z = 0.0f;
                 activeBox.transform.position = touchPosition;
-                activeBox.SetActive(true);
+                //activeBox.SetActive(true);
+                activeBox.GetComponent<BoxCollider2D>().enabled = true;
             }
         }
         //Sets box inactive afer a period of time
-        if (activeBox.activeSelf)
+        if (activeBox.GetComponent<BoxCollider2D>().enabled)
         {
             activeCounter += Time.deltaTime;
             if(activeCounter > maxActiveTime)
             {
                 activeCounter = 0.0f;
-                activeBox.SetActive(false);
+                //activeBox.SetActive(false);
+                activeBox.GetComponent<BoxCollider2D>().enabled = false;
             }
         }
     }

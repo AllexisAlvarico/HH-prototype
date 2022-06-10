@@ -33,7 +33,7 @@ public class PlaneSelection : MonoBehaviour
             Debug.Log("Player Touched Plane ID: " + collision.gameObject.GetComponent<PlaneType>().getID());
             planeData = collision.gameObject;
             rawImageObj.texture = collision.gameObject.GetComponent<PlaneType>().getTexture();
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
             panel.SetActive(true);
         }
     }
