@@ -81,6 +81,11 @@ public class PlaneType : MonoBehaviour
         return planeSprite;
     }
 
+    public Texture getTexture()
+    {
+        return planeSprite.texture;
+    }
+
     public int getID()
     {
         return planeID;

@@ -285,12 +285,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1257217634}
-  m_RootOrder: 3
+  m_Father: {fileID: 1878104684}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.4901123, y: -1.3606873}
+  m_AnchoredPosition: {x: -118.50989, y: 178.63931}
   m_SizeDelta: {x: 202.099, y: 202.099}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &361245405
@@ -474,13 +474,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 128063614}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 795227723}
+        m_TargetAssemblyTypeName: PlaneSelection, Assembly-CSharp
+        m_MethodName: AlliedAnswer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -671,7 +671,7 @@ GameObject:
   - component: {fileID: 795227723}
   - component: {fileID: 795227725}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -690,6 +690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 1257217633}
+  rawImageObj: {fileID: 361245403}
 --- !u!4 &795227724
 Transform:
   m_ObjectHideFlags: 0
@@ -933,7 +934,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1257217634
 RectTransform:
   m_ObjectHideFlags: 0
@@ -949,7 +950,6 @@ RectTransform:
   - {fileID: 690912238}
   - {fileID: 661973212}
   - {fileID: 1878104684}
-  - {fileID: 361245404}
   m_Father: {fileID: 862322378}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1373,6 +1373,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1317538700}
+  - {fileID: 361245404}
   m_Father: {fileID: 1257217634}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1424,7 +1425,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1878104686}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 795227723}
+        m_TargetAssemblyTypeName: PlaneSelection, Assembly-CSharp
+        m_MethodName: AxisAnswer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1878104686
 MonoBehaviour:
   m_ObjectHideFlags: 0
