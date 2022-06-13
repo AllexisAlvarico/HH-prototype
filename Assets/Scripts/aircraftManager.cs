@@ -6,7 +6,8 @@ public class aircraftManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject plane;
-    public Sprite[] aircraftSprite;
+    [SerializeField]
+    private Sprite[] aircraftSprite;
     [SerializeField]
     private int amountOfPlane;
     Vector3 position;

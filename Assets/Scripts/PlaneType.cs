@@ -93,7 +93,7 @@ public class PlaneType : MonoBehaviour
 
     public GameObject GetObject()
     {
-        return gameObject;
+        return this.gameObject;
     }
 
     public void spawnPlane(GameObject _object, Vector3 _postion, int _id)

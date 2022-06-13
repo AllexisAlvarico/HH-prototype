@@ -13,14 +13,12 @@ public class PlaneSelection : MonoBehaviour
     private int count;
     private int score;
 
-    [SerializeField]
     private GameObject scoreText;
-
-
     private GameObject planeData;
 
     private void Start()
     {
+        scoreText = GameObject.Find("ScoreText");         
         count = 0;
         score = 0;
     }
@@ -53,7 +51,6 @@ public class PlaneSelection : MonoBehaviour
         {
             // no points
             count++;
-
             scoreText.GetComponent<Text>().text = "Score: " + score + "/" + count;
         }
         panel.SetActive(false);
