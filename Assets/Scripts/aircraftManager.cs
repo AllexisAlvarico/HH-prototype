@@ -25,4 +25,9 @@ public class aircraftManager : MonoBehaviour
     {
         return aircraftSprite[type];
     }
+
+    public int GetAmountOfPlane()
+    {
+        return amountOfPlane;
+    }
 }

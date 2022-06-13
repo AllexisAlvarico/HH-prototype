@@ -77,4 +77,14 @@ public class PlaneSelection : MonoBehaviour
         panel.SetActive(false);
     }
 
+    public int getCount()
+    {
+        return count;
+    }
+
+    public int getScore()
+    {
+        return score;
+    }
+
 }
