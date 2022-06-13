@@ -16,7 +16,7 @@ public class PlaneSelection : MonoBehaviour
     [SerializeField]
     private Text scoreText;
 
-    private GameObject planeData;
+    private string planeData;
 
     private void Start()
     {     
@@ -30,9 +30,9 @@ public class PlaneSelection : MonoBehaviour
         if (collision.name != "RadarLine")
         {
             Debug.Log("Player Touched Plane ID: " + collision.gameObject.GetComponent<PlaneType>().getID());
-            planeData = collision.gameObject;
+            planeData = collision.gameObject.GetComponent<PlaneType>().getFaction();
             rawImageObj.texture = collision.gameObject.GetComponent<PlaneType>().getTexture();
-            //Destroy(collision.gameObject);
+            Destroy(collision.gameObject);
             panel.SetActive(true);
         }
     }
@@ -40,7 +40,7 @@ public class PlaneSelection : MonoBehaviour
     public void AlliedAnswer()
     {
 
-        if (planeData.GetComponent<PlaneType>().getFaction() == "allied")
+        if (planeData == "allied")
         {
             // give score if correct
             score++;
@@ -60,7 +60,7 @@ public class PlaneSelection : MonoBehaviour
     public void AxisAnswer()
     {
         // give score if correct
-        if (planeData.GetComponent<PlaneType>().getFaction() == "axis")
+        if (planeData == "axis")
         {
             // give score if correct
             score++;
