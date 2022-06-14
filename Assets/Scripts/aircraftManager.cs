@@ -10,16 +10,12 @@ public class aircraftManager : MonoBehaviour
     private GameObject gameplay;
     [SerializeField]
     private Sprite[] aircraftSprite;
-    private int amountOfPlane = 6;
+    private int amountOfPlane;
     Vector3 position;
 
     void Start()
     {
-        for (int i = 0; i < amountOfPlane; i++)
-        {
-            position = new Vector3(Random.Range(-3.91f, 3.79f), Random.Range(-3.92f, 3.75f), 0);
-            plane.GetComponent<PlaneType>().spawnPlane(plane, position, i);
-        }
+
     }
 
     public Sprite setSprite(int type)
@@ -35,18 +31,30 @@ public class aircraftManager : MonoBehaviour
     public void EasyLevel()
     {
         amountOfPlane = 6;
+        GameStart();
         gameplay.SetActive(true);
 
     }
     public void MediumLevel()
     {
         amountOfPlane = 12;
+        GameStart();
         gameplay.SetActive(true);
     }
     public void HardLevel()
     {
         amountOfPlane = 18;
+        GameStart();
         gameplay.SetActive(true);
+    }
+
+    private void GameStart()
+    {
+        for (int i = 0; i < amountOfPlane; i++)
+        {
+            position = new Vector3(Random.Range(-3.91f, 3.79f), Random.Range(-3.92f, 3.75f), 0);
+            plane.GetComponent<PlaneType>().spawnPlane(plane, position, i);
+        }
     }
 }
 
