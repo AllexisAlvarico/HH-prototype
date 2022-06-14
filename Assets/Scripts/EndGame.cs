@@ -13,15 +13,19 @@ public class EndGame : MonoBehaviour
     private GameObject endScreen;
 
     [SerializeField]
+    private GameObject aircraftManager;
+
+    [SerializeField]
     private Text endingText;
 
     [SerializeField]
     private Text scoreText;
 
+
     // Update is called once per frame
     void Update()
     {
-        if(hitBox.GetComponent<PlaneSelection>().getCount() == this.gameObject.GetComponent<aircraftManager>().GetAmountOfPlane())
+        if(hitBox.GetComponent<PlaneSelection>().getCount() == aircraftManager.GetComponent<aircraftManager>().GetAmountOfPlane())
         {
             endScreen.SetActive(true);
             scoreText.gameObject.SetActive(false);

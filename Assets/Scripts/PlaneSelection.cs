@@ -86,5 +86,9 @@ public class PlaneSelection : MonoBehaviour
     {
         return score;
     }
-
+    public void resetScore()
+    {
+        score = 0;
+        count = 0;
+    }
 }
