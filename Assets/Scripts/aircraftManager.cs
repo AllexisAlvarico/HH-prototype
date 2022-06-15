@@ -9,14 +9,12 @@ public class aircraftManager : MonoBehaviour
     [SerializeField]
     private GameObject gameplay;
     [SerializeField]
+    private GameObject radarCircle;
+    [SerializeField]
     private Sprite[] aircraftSprite;
     private int amountOfPlane;
     Vector3 position;
-
-    void Start()
-    {
-
-    }
+    private float radarRadius = 4.3f;
 
     public Sprite setSprite(int type)
     {
@@ -53,6 +51,12 @@ public class aircraftManager : MonoBehaviour
         for (int i = 0; i < amountOfPlane; i++)
         {
             position = new Vector3(Random.Range(-3.91f, 3.79f), Random.Range(-3.92f, 3.75f), 0);
+            if(Vector2.Distance(radarCircle.transform.position, position) > radarRadius)
+            {
+                float angle = Mathf.Asin(position.x / Vector2.Distance(radarCircle.transform.position, position));
+                position.x = radarRadius * Mathf.Sin(angle);
+                position.y = radarRadius * Mathf.Cos(angle);
+            }
             plane.GetComponent<PlaneType>().spawnPlane(plane, position, i);
         }
     }

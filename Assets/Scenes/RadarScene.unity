@@ -980,6 +980,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plane: {fileID: 917585184756521792, guid: 8de795983b675744cbb40d8988438749, type: 3}
   gameplay: {fileID: 1502974054}
+  radarCircle: {fileID: 238684768}
   aircraftSprite:
   - {fileID: 21300000, guid: 28a305dea42505849baa444e190a1041, type: 3}
   - {fileID: 21300000, guid: 2449f9de82953854b891d6da2ac78284, type: 3}
