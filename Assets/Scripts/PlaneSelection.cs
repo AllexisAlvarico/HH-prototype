@@ -18,12 +18,31 @@ public class PlaneSelection : MonoBehaviour
 
     private string planeData;
 
+    private float maxTimer = 3.0f;
+    private float timer = 0;
+
+    bool timerStart = false;
+
     private void Start()
     {     
         count = 0;
         score = 0;
     }
 
+    private void Update()
+    {
+        if(timerStart)
+        {
+            timer += Time.deltaTime;
+        }
+
+        if (timer > maxTimer)
+        {
+            panel.SetActive(false);
+            timerStart = false;
+            timer = 0;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -54,7 +73,7 @@ public class PlaneSelection : MonoBehaviour
             count++;
             scoreText.text = "Score: " + score + "/" + count;
         }
-        panel.SetActive(false);
+        timerStart = true;
     }
 
     public void AxisAnswer()
@@ -74,7 +93,8 @@ public class PlaneSelection : MonoBehaviour
 
             scoreText.text = "Score: " + score + "/" + count;
         }
-        panel.SetActive(false);
+        timerStart = true;
+
     }
 
     public int getCount()
@@ -91,4 +111,7 @@ public class PlaneSelection : MonoBehaviour
         score = 0;
         count = 0;
     }
+
+
+
 }
