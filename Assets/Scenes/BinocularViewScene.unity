@@ -176,7 +176,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -217,6 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1916006952}
   - component: {fileID: 1916006951}
+  - component: {fileID: 1916006953}
   m_Layer: 0
   m_Name: BackgroundImage
   m_TagString: Untagged
@@ -291,3 +292,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1916006953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916006950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e990b1ccf2500b4eb8b628e30da6b72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
