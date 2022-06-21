@@ -6,6 +6,7 @@ public class PlaneType : MonoBehaviour
 {
     private int planeType;
     private string factionType;
+    private string aircraftName;
     private Sprite planeSprite;
     private GameObject planeManager;
     public int planeID;
@@ -30,32 +31,32 @@ public class PlaneType : MonoBehaviour
 
         switch (planeType){
             case 0:
-                //Debug.Log("hellcat");
+                aircraftName = "Hellcat";
                 factionType = "allied";
                 planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
                 break;
             case 1:
-                //Debug.Log("lightning");
+                aircraftName = "Lightning";
                 factionType = "allied";
                 planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
                 break;
             case 2:
-                //Debug.Log("fortress");
+                aircraftName = "Fortress";
                 factionType = "allied";
                 planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
                 break;
             case 3:
-                //Debug.Log("messerschmit");
+                aircraftName = "Messerschmit";
                 factionType = "axis";
                 planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
                 break;
             case 4:
-                //Debug.Log("heinkel");
+                aircraftName = "Heinkel";
                 factionType = "axis";
                 planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
                 break;
             case 5:
-                //Debug.Log("fockwulf");
+                aircraftName = "Fockwulf";
                 factionType = "axis";
                 planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
                 break;
@@ -64,6 +65,11 @@ public class PlaneType : MonoBehaviour
                 break;
         }
  
+    }
+
+    public string getName()
+    {
+        return aircraftName;
     }
 
     public int getPlaneType()
