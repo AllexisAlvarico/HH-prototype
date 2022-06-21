@@ -17,13 +17,37 @@ public class PlaneSelection : MonoBehaviour
     private Text scoreText;
 
     private string planeData;
+    private string planeName;
+    private string answer;
+
+    private float maxTimer = 3.0f;
+    private float timer = 0;
+
+    bool timerStart = false;
 
     private void Start()
-    {     
+    {
         count = 0;
         score = 0;
     }
 
+    private void Update()
+    {
+        Debug.Log(panel.transform.GetChild(4).gameObject.name);
+        Debug.Log(panel.transform.GetChild(5).gameObject.name);
+        if (timerStart)
+        {
+            timer += Time.deltaTime;
+        }
+
+        if (timer > maxTimer)
+        {
+            panel.SetActive(false);
+            timerStart = false;
+            activeButtons();
+            timer = 0;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -31,6 +55,7 @@ public class PlaneSelection : MonoBehaviour
         {
             Debug.Log("Player Touched Plane ID: " + collision.gameObject.GetComponent<PlaneType>().getID());
             planeData = collision.gameObject.GetComponent<PlaneType>().getFaction();
+            planeName = collision.gameObject.GetComponent<PlaneType>().getName();
             rawImageObj.texture = collision.gameObject.GetComponent<PlaneType>().getTexture();
             Destroy(collision.gameObject);
             panel.SetActive(true);
@@ -46,6 +71,7 @@ public class PlaneSelection : MonoBehaviour
             score++;
             count++;
             scoreText.text = "Score: " + score + "/" + count;
+            answer = "Correct";
 
         }
         else
@@ -53,8 +79,12 @@ public class PlaneSelection : MonoBehaviour
             // no points
             count++;
             scoreText.text = "Score: " + score + "/" + count;
+            answer = "Wrong";
         }
-        panel.SetActive(false);
+        timerStart = true;
+        deactiveButtons();
+        panel.transform.GetChild(4).gameObject.GetComponent<Text>().text = planeName;
+        panel.transform.GetChild(5).gameObject.GetComponent<Text>().text = answer;
     }
 
     public void AxisAnswer()
@@ -66,15 +96,20 @@ public class PlaneSelection : MonoBehaviour
             score++;
             count++;
             scoreText.text = "Score: " + score + "/" + count;
+            answer = "Correct";
         }
         else
         {
             // no points
             count++;
-
             scoreText.text = "Score: " + score + "/" + count;
+            answer = "Wrong";
         }
-        panel.SetActive(false);
+        timerStart = true;
+        deactiveButtons();
+        panel.transform.GetChild(4).gameObject.GetComponent<Text>().text = planeName;
+        panel.transform.GetChild(5).gameObject.GetComponent<Text>().text = answer;
+
     }
 
     public int getCount()
@@ -91,4 +126,24 @@ public class PlaneSelection : MonoBehaviour
         score = 0;
         count = 0;
     }
+
+
+    public void deactiveButtons()
+    {
+        panel.transform.GetChild(1).gameObject.SetActive(false);
+        panel.transform.GetChild(2).gameObject.SetActive(false);
+        panel.transform.GetChild(4).gameObject.SetActive(true);
+        panel.transform.GetChild(5).gameObject.SetActive(true);
+    }
+
+    public void activeButtons()
+    {
+        panel.transform.GetChild(1).gameObject.SetActive(true);
+        panel.transform.GetChild(2).gameObject.SetActive(true);
+        panel.transform.GetChild(4).gameObject.SetActive(false);
+        panel.transform.GetChild(5).gameObject.SetActive(false);
+    }
+
+
+
 }
