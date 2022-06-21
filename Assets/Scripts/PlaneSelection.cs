@@ -31,7 +31,8 @@ public class PlaneSelection : MonoBehaviour
 
     private void Update()
     {
-        if(timerStart)
+
+        if (timerStart)
         {
             timer += Time.deltaTime;
         }
@@ -40,6 +41,7 @@ public class PlaneSelection : MonoBehaviour
         {
             panel.SetActive(false);
             timerStart = false;
+            activeButtons();
             timer = 0;
         }
     }
@@ -49,6 +51,7 @@ public class PlaneSelection : MonoBehaviour
         if (collision.name != "RadarLine")
         {
             Debug.Log("Player Touched Plane ID: " + collision.gameObject.GetComponent<PlaneType>().getID());
+
             planeData = collision.gameObject.GetComponent<PlaneType>().getFaction();
             rawImageObj.texture = collision.gameObject.GetComponent<PlaneType>().getTexture();
             Destroy(collision.gameObject);
@@ -74,6 +77,7 @@ public class PlaneSelection : MonoBehaviour
             scoreText.text = "Score: " + score + "/" + count;
         }
         timerStart = true;
+        deactiveButtons();
     }
 
     public void AxisAnswer()
@@ -90,10 +94,10 @@ public class PlaneSelection : MonoBehaviour
         {
             // no points
             count++;
-
             scoreText.text = "Score: " + score + "/" + count;
         }
         timerStart = true;
+        deactiveButtons();
 
     }
 
@@ -113,5 +117,16 @@ public class PlaneSelection : MonoBehaviour
     }
 
 
+    public void deactiveButtons()
+    {
+        panel.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
+        panel.transform.GetChild(2).gameObject.GetComponent<Button>().interactable = false;
+    }
+
+    public void activeButtons()
+    {
+        panel.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = true;
+        panel.transform.GetChild(2).gameObject.GetComponent<Button>().interactable = true;
+    }
 
 }
