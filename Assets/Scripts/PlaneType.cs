@@ -32,32 +32,32 @@ public class PlaneType : MonoBehaviour
         switch (planeType)
         {
             case 0:
-                aircraftName = "Hellcat";
+                aircraftName = "F6F Hellcat";
                 factionType = "allied";
                 planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
                 break;
             case 1:
-                aircraftName = "Lightning";
+                aircraftName = "P-38 Lightning";
                 factionType = "allied";
                 planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
                 break;
             case 2:
-                aircraftName = "Fortress";
+                aircraftName = "B-17 Flying Fortress";
                 factionType = "allied";
                 planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
                 break;
             case 3:
-                aircraftName = "Messerschmit";
+                aircraftName = "Messerschmit 'ME. 110'";
                 factionType = "axis";
                 planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
                 break;
             case 4:
-                aircraftName = "Heinkel";
+                aircraftName = "Heinkel 'HE.111'";
                 factionType = "axis";
                 planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
                 break;
             case 5:
-                aircraftName = "Fockwulf";
+                aircraftName = "Focke-wulf 'F.W.200'";
                 factionType = "axis";
                 planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
                 break;
@@ -96,11 +96,6 @@ public class PlaneType : MonoBehaviour
     public int getID()
     {
         return planeID;
-    }
-
-    public GameObject GetObject()
-    {
-        return this.gameObject;
     }
 
     public void spawnPlane(GameObject _object, Vector3 _postion, int _id)

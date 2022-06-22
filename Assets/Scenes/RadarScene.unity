@@ -3089,7 +3089,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 795227723}
         m_TargetAssemblyTypeName: PlaneSelection, Assembly-CSharp
-        m_MethodName: AlliedAnswer
+        m_MethodName: alliedPlane
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 795227723}
+        m_TargetAssemblyTypeName: PlaneSelection, Assembly-CSharp
+        m_MethodName: checkAnswer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3305,6 +3317,8 @@ MonoBehaviour:
   panel: {fileID: 1257217633}
   rawImageObj: {fileID: 361245405}
   scoreText: {fileID: 46890467}
+  alliedSelected: 0
+  axisSelected: 0
 --- !u!4 &795227724
 Transform:
   m_ObjectHideFlags: 0
@@ -5621,8 +5635,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.4901, y: -134}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 1.4901009, y: -134}
+  m_SizeDelta: {x: 385.3914, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1519997149
 MonoBehaviour:
@@ -6814,7 +6828,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 795227723}
         m_TargetAssemblyTypeName: PlaneSelection, Assembly-CSharp
-        m_MethodName: AxisAnswer
+        m_MethodName: axisPlane
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 795227723}
+        m_TargetAssemblyTypeName: PlaneSelection, Assembly-CSharp
+        m_MethodName: checkAnswer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

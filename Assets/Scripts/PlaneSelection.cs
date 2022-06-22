@@ -24,17 +24,18 @@ public class PlaneSelection : MonoBehaviour
     private float timer = 0;
 
     bool timerStart = false;
+    public bool alliedSelected = false;
+    public bool axisSelected = false;
 
     private void Start()
     {
         count = 0;
         score = 0;
+
     }
 
     private void Update()
     {
-        Debug.Log(panel.transform.GetChild(4).gameObject.name);
-        Debug.Log(panel.transform.GetChild(5).gameObject.name);
         if (timerStart)
         {
             timer += Time.deltaTime;
@@ -46,6 +47,8 @@ public class PlaneSelection : MonoBehaviour
             timerStart = false;
             activeButtons();
             timer = 0;
+            axisSelected = false;
+            alliedSelected = false;
         }
     }
 
@@ -62,56 +65,31 @@ public class PlaneSelection : MonoBehaviour
         }
     }
 
-    public void AlliedAnswer()
+    public void checkAnswer()
     {
-
-        if (planeData == "allied")
+        if (planeData == "allied" && alliedSelected || planeData == "axis" && axisSelected)
         {
-            // give score if correct
             score++;
             count++;
-            scoreText.text = "Score: " + score + "/" + count;
-            answer = "Correct";
-
-        }
-        else
-        {
-            // no points
-            count++;
-            scoreText.text = "Score: " + score + "/" + count;
-            answer = "Wrong";
-        }
-        timerStart = true;
-        deactiveButtons();
-        panel.transform.GetChild(4).gameObject.GetComponent<Text>().text = planeName;
-        panel.transform.GetChild(5).gameObject.GetComponent<Text>().text = answer;
-    }
-
-    public void AxisAnswer()
-    {
-        // give score if correct
-        if (planeData == "axis")
-        {
-            // give score if correct
-            score++;
-            count++;
-            scoreText.text = "Score: " + score + "/" + count;
             answer = "Correct";
         }
         else
         {
-            // no points
             count++;
-            scoreText.text = "Score: " + score + "/" + count;
             answer = "Wrong";
         }
-        timerStart = true;
-        deactiveButtons();
-        panel.transform.GetChild(4).gameObject.GetComponent<Text>().text = planeName;
-        panel.transform.GetChild(5).gameObject.GetComponent<Text>().text = answer;
+
+
+        if (count != GameObject.Find("aircraftManager").GetComponent<aircraftManager>().GetAmountOfPlane())
+        {
+            timerStart = true;
+            deactiveButtons();
+            panel.transform.GetChild(4).gameObject.GetComponent<Text>().text = planeName;
+            panel.transform.GetChild(5).gameObject.GetComponent<Text>().text = answer;
+            scoreText.text = "Score: " + score + "/" + count;
+        }
 
     }
-
     public int getCount()
     {
         return count;
@@ -123,11 +101,21 @@ public class PlaneSelection : MonoBehaviour
     }
     public void resetScore()
     {
+        panel.SetActive(false);
         score = 0;
         count = 0;
+        scoreText.text = "Score: " + score + "/" + count;
     }
 
+    public void alliedPlane()
+    {
+        alliedSelected = true;
+    }
 
+    public void axisPlane()
+    {
+        axisSelected = true;
+    }
     public void deactiveButtons()
     {
         panel.transform.GetChild(1).gameObject.SetActive(false);
@@ -135,7 +123,6 @@ public class PlaneSelection : MonoBehaviour
         panel.transform.GetChild(4).gameObject.SetActive(true);
         panel.transform.GetChild(5).gameObject.SetActive(true);
     }
-
     public void activeButtons()
     {
         panel.transform.GetChild(1).gameObject.SetActive(true);
@@ -143,7 +130,4 @@ public class PlaneSelection : MonoBehaviour
         panel.transform.GetChild(4).gameObject.SetActive(false);
         panel.transform.GetChild(5).gameObject.SetActive(false);
     }
-
-
-
 }
