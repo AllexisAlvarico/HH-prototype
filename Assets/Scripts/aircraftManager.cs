@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class aircraftManager : MonoBehaviour
 {
-    // Start is called before the first frame update
     public GameObject plane;
+    public string currentDifficulty;
     [SerializeField]
     private GameObject gameplay;
     [SerializeField]
@@ -31,6 +31,7 @@ public class aircraftManager : MonoBehaviour
         amountOfPlane = 6;
         GameStart();
         gameplay.SetActive(true);
+        currentDifficulty = "Easy";
 
     }
     public void MediumLevel()
@@ -38,12 +39,14 @@ public class aircraftManager : MonoBehaviour
         amountOfPlane = 12;
         GameStart();
         gameplay.SetActive(true);
+        currentDifficulty = "Medium";
     }
     public void HardLevel()
     {
         amountOfPlane = 18;
         GameStart();
         gameplay.SetActive(true);
+        currentDifficulty = "Hard";
     }
 
     private void GameStart()
