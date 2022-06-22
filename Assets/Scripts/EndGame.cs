@@ -25,7 +25,8 @@ public class EndGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(hitBox.GetComponent<PlaneSelection>().getCount() == aircraftManager.GetComponent<aircraftManager>().GetAmountOfPlane())
+        // When the number of planes checked matches the total number of planes in the game, end it and show the end panel
+        if(hitBox.GetComponent<PlaneSelection>().getCount() == aircraftManager.GetComponent<aircraftManager>().GetAmountOfPlane() && !endScreen.activeSelf)
         {
             endScreen.SetActive(true);
             scoreText.gameObject.SetActive(false);
@@ -35,6 +36,29 @@ public class EndGame : MonoBehaviour
     }
 
     public void ResetGame()
+    {
+        endScreen.SetActive(false);
+        scoreText.gameObject.SetActive(true);
+        endingText.gameObject.SetActive(false);
+        hitBox.GetComponent<PlaneSelection>().resetScore();
+        switch (aircraftManager.GetComponent<aircraftManager>().currentDifficulty)
+        {
+            case "Easy":
+                aircraftManager.GetComponent<aircraftManager>().EasyLevel();
+                break;
+            case "Medium":
+                aircraftManager.GetComponent<aircraftManager>().MediumLevel();
+                break;
+            case "Hard":
+                aircraftManager.GetComponent<aircraftManager>().HardLevel();
+                break;
+            default:
+                Debug.Log("Can't find Current Difficulty");
+                break;
+        }
+    }
+
+    public void ChangeDifficulty()
     {
         SceneManager.LoadScene("RadarScene");
     }
