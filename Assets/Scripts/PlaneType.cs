@@ -104,4 +104,12 @@ public class PlaneType : MonoBehaviour
         Instantiate(_object, _postion, Quaternion.identity);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Plane")
+        {
+            transform.position = new Vector3(Random.Range(-3.91f, 3.79f), Random.Range(-3.92f, 3.75f), 0);
+        }
+    }
+
 }

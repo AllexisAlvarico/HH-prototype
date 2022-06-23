@@ -15,6 +15,7 @@ public class aircraftManager : MonoBehaviour
     private int amountOfPlane;
     Vector3 position;
     private float radarRadius = 4.3f;
+    private List<GameObject> currentPlanes = new List<GameObject>();
 
     public Sprite setSprite(int type)
     {
@@ -60,7 +61,7 @@ public class aircraftManager : MonoBehaviour
                 position.x = radarRadius * Mathf.Sin(angle);
                 position.y = radarRadius * Mathf.Cos(angle);
             }
-            plane.GetComponent<PlaneType>().spawnPlane(plane, position, i);
+            Instantiate(plane, position, Quaternion.identity);
         }
     }
 }
