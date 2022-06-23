@@ -304,3 +304,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e990b1ccf2500b4eb8b628e30da6b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  contraintOffset: 6
