@@ -22,6 +22,7 @@ public class EndGame : MonoBehaviour
     private Text scoreText;
 
 
+
     // Update is called once per frame
     void Update()
     {
@@ -41,16 +42,16 @@ public class EndGame : MonoBehaviour
         scoreText.gameObject.SetActive(true);
         endingText.gameObject.SetActive(false);
         hitBox.GetComponent<PlaneSelection>().resetScore();
-        switch (aircraftManager.GetComponent<aircraftManager>().currentDifficulty)
+        switch (aircraftManager.GetComponent<aircraftManager>().amountOfPlane)
         {
-            case "Easy":
-                aircraftManager.GetComponent<aircraftManager>().EasyLevel();
+            case 6:
+                aircraftManager.GetComponent<aircraftManager>().Level(6);
                 break;
-            case "Medium":
-                aircraftManager.GetComponent<aircraftManager>().MediumLevel();
+            case 12:
+                aircraftManager.GetComponent<aircraftManager>().Level(12);
                 break;
-            case "Hard":
-                aircraftManager.GetComponent<aircraftManager>().HardLevel();
+            case 18:
+                aircraftManager.GetComponent<aircraftManager>().Level(18);
                 break;
             default:
                 Debug.Log("Can't find Current Difficulty");

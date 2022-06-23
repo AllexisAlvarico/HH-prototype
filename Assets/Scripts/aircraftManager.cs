@@ -5,17 +5,18 @@ using UnityEngine;
 public class aircraftManager : MonoBehaviour
 {
     public GameObject plane;
-    public string currentDifficulty;
+
     [SerializeField]
     private GameObject gameplay;
     [SerializeField]
     private GameObject radarCircle;
     [SerializeField]
     private Sprite[] aircraftSprite;
-    private int amountOfPlane;
+
     Vector3 position;
     private float radarRadius = 4.3f;
-    private List<GameObject> currentPlanes = new List<GameObject>();
+
+    public int amountOfPlane;
 
     public Sprite setSprite(int type)
     {
@@ -26,29 +27,14 @@ public class aircraftManager : MonoBehaviour
     {
         return amountOfPlane;
     }
+    
+    public void Level(int _amount)
+    {
+        amountOfPlane = _amount;
+        GameStart();
+        gameplay.SetActive(true);
+    }
 
-    public void EasyLevel()
-    {
-        amountOfPlane = 6;
-        GameStart();
-        gameplay.SetActive(true);
-        currentDifficulty = "Easy";
-
-    }
-    public void MediumLevel()
-    {
-        amountOfPlane = 12;
-        GameStart();
-        gameplay.SetActive(true);
-        currentDifficulty = "Medium";
-    }
-    public void HardLevel()
-    {
-        amountOfPlane = 18;
-        GameStart();
-        gameplay.SetActive(true);
-        currentDifficulty = "Hard";
-    }
 
     private void GameStart()
     {
