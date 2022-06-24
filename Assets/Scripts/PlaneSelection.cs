@@ -26,6 +26,7 @@ public class PlaneSelection : MonoBehaviour
     bool timerStart = false;
     public bool alliedSelected = false;
     public bool axisSelected = false;
+    private bool planeSelected = false;
 
     private void Start()
     {
@@ -54,7 +55,7 @@ public class PlaneSelection : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.name != "RadarLine")
+        if (collision.name != "RadarLine" && !planeSelected)
         {
             Debug.Log("Player Touched Plane ID: " + collision.gameObject.GetComponent<PlaneType>().getID());
             planeData = collision.gameObject.GetComponent<PlaneType>().getFaction();
@@ -62,6 +63,7 @@ public class PlaneSelection : MonoBehaviour
             rawImageObj.texture = collision.gameObject.GetComponent<PlaneType>().getTexture();
             Destroy(collision.gameObject);
             panel.SetActive(true);
+            planeSelected = true;
         }
     }
 
@@ -88,6 +90,7 @@ public class PlaneSelection : MonoBehaviour
             panel.transform.GetChild(5).gameObject.GetComponent<Text>().text = answer;
             scoreText.text = "Score: " + score + "/" + count;
         }
+        planeSelected = false;
 
     }
     public int getCount()
