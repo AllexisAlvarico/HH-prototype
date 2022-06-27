@@ -6,6 +6,7 @@ public class PlaneType : MonoBehaviour
 {
     private int planeType;
     private string factionType;
+    private string aircraftName;
     private Sprite planeSprite;
     private GameObject planeManager;
     public int planeID;
@@ -13,7 +14,7 @@ public class PlaneType : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        planeManager = GameObject.Find("aircraftManager"); 
+        planeManager = GameObject.Find("aircraftManager");
         randomizer();
         Debug.Log("faction: " + factionType);
     }
@@ -28,34 +29,35 @@ public class PlaneType : MonoBehaviour
     {
         planeType = Random.Range(0, 5);
 
-        switch (planeType){
+        switch (planeType)
+        {
             case 0:
-                //Debug.Log("hellcat");
+                aircraftName = "F6F Hellcat";
                 factionType = "allied";
                 planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
                 break;
             case 1:
-                //Debug.Log("lightning");
+                aircraftName = "P-38 Lightning";
                 factionType = "allied";
                 planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
                 break;
             case 2:
-                //Debug.Log("fortress");
+                aircraftName = "B-17 Flying Fortress";
                 factionType = "allied";
                 planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
                 break;
             case 3:
-                //Debug.Log("messerschmit");
+                aircraftName = "Messerschmit 'ME. 110'";
                 factionType = "axis";
                 planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
                 break;
             case 4:
-                //Debug.Log("heinkel");
+                aircraftName = "Heinkel 'HE.111'";
                 factionType = "axis";
                 planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
                 break;
             case 5:
-                //Debug.Log("fockwulf");
+                aircraftName = "Focke-wulf 'F.W.200'";
                 factionType = "axis";
                 planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
                 break;
@@ -63,7 +65,12 @@ public class PlaneType : MonoBehaviour
                 //Debug.Log("");
                 break;
         }
- 
+
+    }
+
+    public string getName()
+    {
+        return aircraftName;
     }
 
     public int getPlaneType()
@@ -91,15 +98,18 @@ public class PlaneType : MonoBehaviour
         return planeID;
     }
 
-    public GameObject GetObject()
-    {
-        return this.gameObject;
-    }
-
     public void spawnPlane(GameObject _object, Vector3 _postion, int _id)
     {
         planeID = _id;
         Instantiate(_object, _postion, Quaternion.identity);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Plane")
+        {
+            transform.position = new Vector3(Random.Range(-3.91f, 3.79f), Random.Range(-3.92f, 3.75f), 0);
+        }
     }
 
 }

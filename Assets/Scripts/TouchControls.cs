@@ -6,7 +6,7 @@ public class TouchControls : MonoBehaviour
 {
 
     [SerializeField]
-    private GameObject activeBox;       //Used to set positions and wether or not it's active;
+    private GameObject activeBox;       //Used to set positions and check wether or not the hitbox is active
     [SerializeField]
     private float maxActiveTime = 0.1f;
     
@@ -16,7 +16,6 @@ public class TouchControls : MonoBehaviour
 
     void Start()
     {
-        //activeBox.SetActive(false);
         activeBox.GetComponent<BoxCollider2D>().enabled = false;
     }
 
@@ -32,7 +31,6 @@ public class TouchControls : MonoBehaviour
                 touchPosition = Camera.main.ScreenToWorldPoint(touchInput.position);
                 touchPosition.z = 0.0f;
                 activeBox.transform.position = touchPosition;
-                //activeBox.SetActive(true);
                 activeBox.GetComponent<BoxCollider2D>().enabled = true;
             }
         }
@@ -43,7 +41,6 @@ public class TouchControls : MonoBehaviour
             if(activeCounter > maxActiveTime)
             {
                 activeCounter = 0.0f;
-                //activeBox.SetActive(false);
                 activeBox.GetComponent<BoxCollider2D>().enabled = false;
             }
         }

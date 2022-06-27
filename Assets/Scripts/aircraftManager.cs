@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class aircraftManager : MonoBehaviour
 {
-    // Start is called before the first frame update
     public GameObject plane;
+
     [SerializeField]
     private GameObject gameplay;
     [SerializeField]
     private GameObject radarCircle;
     [SerializeField]
     private Sprite[] aircraftSprite;
-    private int amountOfPlane;
+
     Vector3 position;
     private float radarRadius = 4.3f;
+
+    public int amountOfPlane;
 
     public Sprite setSprite(int type)
     {
@@ -25,26 +27,14 @@ public class aircraftManager : MonoBehaviour
     {
         return amountOfPlane;
     }
+    
+    public void Level(int _amount)
+    {
+        amountOfPlane = _amount;
+        GameStart();
+        gameplay.SetActive(true);
+    }
 
-    public void EasyLevel()
-    {
-        amountOfPlane = 6;
-        GameStart();
-        gameplay.SetActive(true);
-
-    }
-    public void MediumLevel()
-    {
-        amountOfPlane = 12;
-        GameStart();
-        gameplay.SetActive(true);
-    }
-    public void HardLevel()
-    {
-        amountOfPlane = 18;
-        GameStart();
-        gameplay.SetActive(true);
-    }
 
     private void GameStart()
     {
@@ -57,7 +47,7 @@ public class aircraftManager : MonoBehaviour
                 position.x = radarRadius * Mathf.Sin(angle);
                 position.y = radarRadius * Mathf.Cos(angle);
             }
-            plane.GetComponent<PlaneType>().spawnPlane(plane, position, i);
+            Instantiate(plane, position, Quaternion.identity);
         }
     }
 }
