@@ -47,7 +47,7 @@ public class aircraftManager : MonoBehaviour
                 position.x = radarRadius * Mathf.Sin(angle);
                 position.y = radarRadius * Mathf.Cos(angle);
             }
-            Instantiate(plane, position, Quaternion.identity);
+            plane.GetComponent<PlaneType>().spawnPlane(plane, position, i);
         }
     }
 }
