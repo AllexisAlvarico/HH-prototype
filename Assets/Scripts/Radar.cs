@@ -22,6 +22,6 @@ public class Radar : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Instantiate(radarPing, collision.transform.position, Quaternion.identity).GetComponent<RadarPing>();
-        Debug.Log("Plane ID: " + collision.gameObject.GetComponent<PlaneType>().getID());
+        //Debug.Log("Plane ID: " + collision.gameObject.GetComponent<PlaneType>().getID());/
     }
 }

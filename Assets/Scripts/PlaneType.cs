@@ -10,6 +10,7 @@ public class PlaneType : MonoBehaviour
     private Sprite planeSprite;
     private GameObject planeManager;
     public int planeID;
+    public bool spotted;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class PlaneType : MonoBehaviour
         planeManager = GameObject.Find("aircraftManager");
         randomizer();
         Debug.Log("faction: " + factionType);
+        spotted = false;
     }
 
 
@@ -29,43 +31,50 @@ public class PlaneType : MonoBehaviour
     {
         planeType = Random.Range(0, 5);
 
-        switch (planeType)
+        if (spotted)
         {
-            case 0:
-                aircraftName = "F6F Hellcat";
-                factionType = "allied";
-                planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
-                break;
-            case 1:
-                aircraftName = "P-38 Lightning";
-                factionType = "allied";
-                planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
-                break;
-            case 2:
-                aircraftName = "B-17 Flying Fortress";
-                factionType = "allied";
-                planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
-                break;
-            case 3:
-                aircraftName = "Messerschmit 'ME. 110'";
-                factionType = "axis";
-                planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
-                break;
-            case 4:
-                aircraftName = "Heinkel 'HE.111'";
-                factionType = "axis";
-                planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
-                break;
-            case 5:
-                aircraftName = "Focke-wulf 'F.W.200'";
-                factionType = "axis";
-                planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
-                break;
-            default:
-                //Debug.Log("");
-                break;
+            switch (planeType)
+            {
+                case 0:
+                    aircraftName = "F6F Hellcat";
+                    factionType = "allied";
+                    planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
+                    break;
+                case 1:
+                    aircraftName = "P-38 Lightning";
+                    factionType = "allied";
+                    planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
+                    break;
+                case 2:
+                    aircraftName = "B-17 Flying Fortress";
+                    factionType = "allied";
+                    planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
+                    break;
+                case 3:
+                    aircraftName = "Messerschmit 'ME. 110'";
+                    factionType = "axis";
+                    planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
+                    break;
+                case 4:
+                    aircraftName = "Heinkel 'HE.111'";
+                    factionType = "axis";
+                    planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
+                    break;
+                case 5:
+                    aircraftName = "Focke-wulf 'F.W.200'";
+                    factionType = "axis";
+                    planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(planeType);
+                    break;
+                default:
+                    //Debug.Log("");
+                    break;
+            }
         }
-
+        else
+        {
+            aircraftName = "No visual";
+            //planeSprite = planeManager.GetComponent<aircraftManager>().setSprite(put "no visual" sprite);
+        }
     }
 
     public string getName()
@@ -111,5 +120,4 @@ public class PlaneType : MonoBehaviour
             transform.position = new Vector3(Random.Range(-3.91f, 3.79f), Random.Range(-3.92f, 3.75f), 0);
         }
     }
-
 }
